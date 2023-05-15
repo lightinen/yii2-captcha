@@ -51,6 +51,8 @@ class Captcha extends \yii\widgets\InputWidget
 
     public $clientOptions = [];
 
+    public $hl = 'ru';
+
     public function init()
     {
         parent::init();
@@ -126,6 +128,7 @@ class Captcha extends \yii\widgets\InputWidget
 
             case self::TYPE_HCAPTCHA:
                 $this->view->registerJsFile(self::API_CLIENT_HCAPTCHA.http_build_query([
+                    'hl' => $this->hl,
                     'onload' => 'dynamikacaptcha'.$this->getId(),
                     'render' => 'explicit',
                 ]));
